@@ -27,6 +27,7 @@ dependencies:
   flutter_bloc: ^4.0.0
   equatable: ^1.1.0
   chopper: ^2.4.0
+  built_value: ^7.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,6 +39,8 @@ dev_dependencies:
     sdk: flutter
   chopper_generator: ^2.3.4
   build_runner:
+  built_value_generator: ^7.1.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

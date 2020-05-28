@@ -1,5 +1,6 @@
 import 'package:chopper/chopper.dart';
+import 'package:flutterweatherapp/weather/data/network/response/WeatherResponseBuilt.dart';
 
 abstract class WeatherNetworkDataSource {
-  Future<Response> getWeather(String city);
+  Future<Response<WeatherResponseBuilt>> getWeather(String city);
 }
