@@ -29,7 +29,7 @@ class Weather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city: "44418"));
+    BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city: '44418'));
 
     return Center(
       child: BlocBuilder<WeatherBloc, WeatherState>(
