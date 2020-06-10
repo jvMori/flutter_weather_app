@@ -9,6 +9,12 @@ abstract class WeatherConditionBuilt implements Built<WeatherConditionBuilt, Wea
   int get id;
 
   String get weather_state_name;
+  String get weather_state_abbr;
+  String get applicable_date;
+  double get the_temp;
+  double get wind_speed;
+  double get air_pressure;
+  int get humidity;
 
   WeatherConditionBuilt._();
 

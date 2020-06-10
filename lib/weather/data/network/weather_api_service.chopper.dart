@@ -14,8 +14,8 @@ class _$WeatherApiService extends WeatherApiService {
 
   final definitionType = WeatherApiService;
 
-  Future<Response<WeatherResponseBuilt>> getWeather(String id) {
-    final $url = 'location/{id}';
+  Future<Response<WeatherResponseBuilt>> getWeather(String city) {
+    final $url = 'location/${city}';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<WeatherResponseBuilt, WeatherResponseBuilt>($request);
   }

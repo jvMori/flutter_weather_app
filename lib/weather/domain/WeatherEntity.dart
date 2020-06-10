@@ -3,26 +3,22 @@ import 'package:equatable/equatable.dart';
 class WeatherEntity extends Equatable {
   final String cityName;
   final String description;
-  //final String weatherState;
-//  final double minTemp;
-//  final double maxTemp;
-//  final double temp;
-//  final double airPressure;
-//  final double humidity;
-//  final double windSpeed;
-//  final double windDirection;
+  final String weatherState;
+  final double temp;
+  final double airPressure;
+  final int humidity;
+  final double windSpeed;
+  final String date;
 
   WeatherEntity(
     this.cityName,
     this.description,
-    //this.weatherState,
-//    this.minTemp,
-//    this.maxTemp,
-//    this.temp,
-//    this.airPressure,
-//    this.humidity,
-//    this.windSpeed,
-//    this.windDirection,
+    this.weatherState,
+    this.temp,
+    this.airPressure,
+    this.humidity,
+    this.windSpeed,
+    this.date,
   );
 
   @override

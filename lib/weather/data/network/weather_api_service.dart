@@ -6,15 +6,15 @@ part 'weather_api_service.chopper.dart';
 
 @ChopperApi(baseUrl: "location/")
 abstract class WeatherApiService extends ChopperService {
-  @Get(path: '{id}')
-  Future<Response<WeatherResponseBuilt>> getWeather(String id);
+  @Get(path: '{city}')
+  Future<Response<WeatherResponseBuilt>> getWeather(@Path('city') String city);
   
   @Get(path: 'search/')
   Future<Response> getCity({@Query() String query});
 
   static WeatherApiService create() {
     final client = ChopperClient(
-      baseUrl: 'https://www.metaweather.com/api/',
+      baseUrl: "https://www.metaweather.com/api/",
       services: [
         _$WeatherApiService(),
       ],
