@@ -20,10 +20,10 @@ class _$WeatherApiService extends WeatherApiService {
     return client.send<WeatherResponseBuilt, WeatherResponseBuilt>($request);
   }
 
-  Future<Response> getCity({String query}) {
+  Future<Response<BuiltList<LocationResponse>>> getCity({String query}) {
     final $url = 'location/search/';
     final Map<String, dynamic> $params = {'query': query};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<dynamic, dynamic>($request);
+    return client.send<BuiltList<LocationResponse>, LocationResponse>($request);
   }
 }

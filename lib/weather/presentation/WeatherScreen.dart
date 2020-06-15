@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterweatherapp/location/data/LocationNetworkDataSourceImpl.dart';
+import 'package:flutterweatherapp/location/data/LocationRepositoryImpl.dart';
+import 'package:flutterweatherapp/location/domain/LocationNetworkDataSource.dart';
+import 'package:flutterweatherapp/location/domain/LocationRepository.dart';
 import 'package:flutterweatherapp/weather/bloc/WeatherBloc.dart';
 import 'package:flutterweatherapp/weather/bloc/WeatherEvent.dart';
 import 'package:flutterweatherapp/weather/bloc/WeatherState.dart';
@@ -14,7 +18,9 @@ class WeatherScreen extends StatelessWidget {
   static WeatherApiService apiService = WeatherApiService.create();
   static WeatherNetworkDataSource dataSource =
       WeatherNetworkDataSourceImpl(apiService);
-  final WeatherRepository repository = WeatherRepositoryImpl(dataSource);
+  static LocationNetworkDataSource locationNetworkDataSource = LocationNetworkDataSourceImpl(apiService);
+  static LocationRepository locationRepository = LocationRepositoryImpl(locationNetworkDataSource);
+  final WeatherRepository repository = WeatherRepositoryImpl(dataSource, locationRepository);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,7 @@ class Weather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city: '44418'));
+    BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city: 'london'));
 
     return Center(
       child: BlocBuilder<WeatherBloc, WeatherState>(

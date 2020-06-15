@@ -4,9 +4,11 @@ import 'package:flutterweatherapp/weather/data/network/response/WeatherCondition
 import 'package:flutterweatherapp/weather/data/network/response/WeatherResponseBuilt.dart';
 import 'package:built_collection/built_collection.dart';
 
+import 'location/data/LocationResponse.dart';
+
 
 part 'serializers.g.dart';
 
-@SerializersFor(const [WeatherResponseBuilt, WeatherConditionBuilt])
+@SerializersFor(const [WeatherResponseBuilt, WeatherConditionBuilt, LocationResponse])
 final Serializers serializers =
 (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
