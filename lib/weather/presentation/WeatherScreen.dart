@@ -13,14 +13,18 @@ import 'package:flutterweatherapp/weather/data/network/weather_api_service.dart'
 import 'package:flutterweatherapp/weather/data/repositories/WeatherRepositoryImpl.dart';
 import 'package:flutterweatherapp/weather/domain/WeatherNetworkDataSource.dart';
 import 'package:flutterweatherapp/weather/domain/WeatherRepository.dart';
+import 'package:flutterweatherapp/weather/presentation/weather_container.dart';
 
 class WeatherScreen extends StatelessWidget {
   static WeatherApiService apiService = WeatherApiService.create();
   static WeatherNetworkDataSource dataSource =
       WeatherNetworkDataSourceImpl(apiService);
-  static LocationNetworkDataSource locationNetworkDataSource = LocationNetworkDataSourceImpl(apiService);
-  static LocationRepository locationRepository = LocationRepositoryImpl(locationNetworkDataSource);
-  final WeatherRepository repository = WeatherRepositoryImpl(dataSource, locationRepository);
+  static LocationNetworkDataSource locationNetworkDataSource =
+      LocationNetworkDataSourceImpl(apiService);
+  static LocationRepository locationRepository =
+      LocationRepositoryImpl(locationNetworkDataSource);
+  final WeatherRepository repository =
+      WeatherRepositoryImpl(dataSource, locationRepository);
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +38,15 @@ class WeatherScreen extends StatelessWidget {
 class Weather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city: 'london'));
 
     return Center(
       child: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (cotext, state) {
           if (state is WeatherSuccess) {
-            return Text("${state.weather.description}");
+            return WeatherContainer(
+              weatherEntity: state.weather,
+            );
           }
           if (state is WeatherError) {
             return Text("Error");
